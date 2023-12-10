@@ -1,22 +1,31 @@
+import java.lang.Math;
 public class Main {
-    public static void main(String[] args) {
 
+
+    public static void main(String[] args) throws Exception {
         Harta harta = new Harta();
+        harta.generareHarta();
 
-        int[] v;
 
-        v = harta.getcoord();
+        Generatie gen = new Generatie();
+        gen.creareGeneratii();
 
-        harta.loc1.setx(v[0]);
-        harta.loc1.sety(v[1]);
-        harta.loc2.setx(v[2]);
-        harta.loc2.sety(v[3]);
-        harta.loc3.setx(v[4]);
-        harta.loc3.sety(v[5]);
-        harta.loc4.setx(v[6]);
-        harta.loc4.sety(v[7]);
-        harta.loc5.setx(v[8]);
-        harta.loc5.sety(v[9]);
+        double distantaTotala = 0, x1, y1, x2, y2, dx, dy;
+        for(int i = 0; i < 19; i++){
+            x1 = harta.localitati[gen.generatie[0].traseu.get(i)].getx();
+            x2 = harta.localitati[gen.generatie[0].traseu.get(i+1)].getx();
+            y1 = harta.localitati[gen.generatie[0].traseu.get(i)].gety();
+            y2 = harta.localitati[gen.generatie[0].traseu.get(i+1)].gety();
+
+            dx = x2 - x1;
+            dy = y2 - y1;
+            distantaTotala = Math.sqrt(dx * dx + dy * dy);
+
+        }
+
+        System.out.println(distantaTotala);
+
 
     }
+
 }
