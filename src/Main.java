@@ -1,22 +1,12 @@
 public class Main {
-    public static void main(String[] args) {
-
+    public static void main(String[] args) throws Exception {
         Harta harta = new Harta();
+        harta.generareHarta();
+        harta.localitati[3].getnume();
+        harta.localitati[3].getx();
+        harta.localitati[3].gety()  ;
 
-        int[] v;
-
-        v = harta.getcoord();
-
-        harta.loc1.setx(v[0]);
-        harta.loc1.sety(v[1]);
-        harta.loc2.setx(v[2]);
-        harta.loc2.sety(v[3]);
-        harta.loc3.setx(v[4]);
-        harta.loc3.sety(v[5]);
-        harta.loc4.setx(v[6]);
-        harta.loc4.sety(v[7]);
-        harta.loc5.setx(v[8]);
-        harta.loc5.sety(v[9]);
-
+        Generatie gen = new Generatie();
+        gen.creareGeneratii();
     }
 }
