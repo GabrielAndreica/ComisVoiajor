@@ -1,47 +1,31 @@
 public class Localitate {
-
-    private int x;
-    private int y;
-
+    private int index;
+    private double x;
+    private double y;
     private String nume;
-
-    public int getx(){
-
-        System.out.println(this.x);
+    public int getIndex(){
+        System.out.println(this.index);
+        return this.index;
+    }
+    public double getx(){
         return this.x;
-
     }
-
-    public int gety(){
-
-        System.out.println(this.y);
+    public double gety(){
         return this.y;
-
     }
-
-    public void getnume(){
-
-        System.out.println(this.nume);
-
+    public String getnume(){
+        return this.nume;
     }
-
-    public void setx(int valoare){
-
+    public void setIndex(int valoare){
+        this.index = valoare;
+    }
+    public void setx(double valoare){
         this.x = valoare;
-
     }
-
-    public void sety(int valoare){
-
+    public void sety(double valoare){
         this.y = valoare;
-
     }
-
     public void setnume(String valoare){
-
         this.nume = valoare;
-
     }
-
-
 }
