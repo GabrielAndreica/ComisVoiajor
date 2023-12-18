@@ -1,4 +1,5 @@
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.Random;
 public class Individ {
     public ArrayList<Integer> traseu = new ArrayList<Integer>();
@@ -28,8 +29,14 @@ public class Individ {
             traseu.add(rand.nextInt(20));
         }
     }
-    public void getTraseu() {
-        System.out.println(traseu);
+    public ArrayList<Integer> getTraseu() {
+        return this.traseu;
+    }
+
+    public void setTraseu(ArrayList<Integer> traseu1){
+        for(int i = 0; i < 19; i++){
+            traseu.add(traseu1.get(i));
+        }
     }
 
     public double getDistance(Harta harta){
@@ -55,5 +62,12 @@ public class Individ {
         distantaTotala += haversine(x1,y1, start.getx(), start.gety());
 
         return distantaTotala;
+    }
+
+    public void mutatie(){
+        Random rand = new Random();
+        int loc1 = rand.nextInt(19);
+        int loc2 = rand.nextInt(19);
+        Collections.swap(traseu, loc1, loc2);
     }
 }
