@@ -1,26 +1,31 @@
 public class Main {
     public static void main(String[] args) throws Exception {
+        int nrGeneratii = 0;
+        //se genereaza harta cu localitatile si inf. aferente
         Harta harta = new Harta();
         harta.generareHarta();
-
+        //se genereaza prima generatie de trasee random
         Generatie gen = new Generatie();
         gen.crearePrimaGeneratie();
-
-        for(Individ i : gen.generatie1){
-            i.getDistance(harta);
+        //se inlocuiesc localitatile care apar mai mult de 1 data, cu cele care nu apar deloc pentru toate traseele din prima generatie
+        gen.reparareGeneratie();
+        //se returneaza cel mai fit traseu din prima generatie
+        gen.celmaiFit(harta);
+        //decursul a 100.000 generatii (1.000.000 trasee)
+        while(nrGeneratii < 100000){
+            //se sorteaza vectorul de trasee crescator in functie de fitness (distanta totala)
+            gen.sortareGeneratie(harta);
+            //se realizeaza crossover-ul
+            gen.incrucisare();
+            //se inlocuiesc localitatile care apar mai mult de 1 data, cu cele care nu apar deloc pentru toate traseele din generatie
+            gen.reparareGeneratie();
+            //se returneaza cel mai fit traseu din generatia curenta
+            gen.celmaiFit(harta);
+            nrGeneratii += 1;
         }
-
-        for(int i = 0; i < 10; i++){
-            System.out.println(gen.generatie1[i].getTraseu());
-        }
-
-        System.out.println('\n');
-
-        gen.incrucisare();
-
-        System.out.println('\n');
-        for(int i = 0; i < 10; i++){
-            System.out.println(gen.generatie2[i].getTraseu());
-        }
+        //se afiseaza cel mai bun si cel mai slab traseu generat
+        System.out.println("\n====");
+        System.out.println("Cel mai fit traseu din toate generatiile este de: " + gen.getCelmaiFitOverall() + " km");
+        System.out.println("Cel mai putin fit traseu din toate generatiile este de: " + gen.getCelmaiputinfitOverall() + " km");
     }
 }
